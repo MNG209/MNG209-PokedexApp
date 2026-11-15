@@ -37,8 +37,19 @@ public class PokedexApp {
     }
 
     private static void searchPokemon(Scanner input) {
-        // TODO 1: Complete this menu action.
-        System.out.println("TODO: complete this action");
+
+        System.out.print("Enter Pokemon name: ");
+
+        String name = PokemonLoader.normalizeName(input.nextLine());
+
+        Pokemon pokemon = pokedex.get(name);
+
+        if (pokemon != null) {
+            System.out.println(pokemon);
+        }
+        else {
+            System.out.println("Pokemon not found: " + name);
+        }
     }
 
     private static void addOrUpdatePokemon(Scanner input) {

@@ -53,9 +53,35 @@ public class PokedexApp {
     }
 
     private static void addOrUpdatePokemon(Scanner input) {
-        // TODO 2: Complete this menu action.
-        System.out.println("TODO: complete this action");
+    	
+    	System.out.print("Enter Pokemon Name: ");
+    	String name = PokemonLoader.normalizeName(input.nextLine());
+    	
+    	if (name.isEmpty()) {
+    		System.out.println("Pokemon name cannot be blank.");
+            return;
+        }
+
+        Pokemon existing = pokedex.get(name);
+
+        int id = readNonNegativeInt(input, "Enter ID: ");
+        int heightDm = readNonNegativeInt(input, "Enter height (dm): ");
+        int weightHg = readNonNegativeInt(input, "Enter weight (hg): ");
+        int baseExperience = readNonNegativeInt(input, "Enter base experience: ");
+
+        Pokemon pokemon = new Pokemon(id, name, heightDm, weightHg, baseExperience);
+
+        pokedex.insert(name, pokemon);
+
+        if (existing != null) {
+            System.out.println("Pokemon updated: " + name);
+        }
+        else {
+            System.out.println("Pokemon added: " + name);
+        }
+    
     }
+    
 
     private static void removePokemon(Scanner input) {
         // TODO 3: Complete this menu action.

@@ -83,10 +83,20 @@ public class PokedexApp {
     }
     
 
-    private static void removePokemon(Scanner input) {
-        // TODO 3: Complete this menu action.
-        System.out.println("TODO: complete this action");
-    }
+   private static void removePokemon(Scanner input) {
+	   System.out.print("Enter Pokemon name to remove: ");
+
+	    String name = PokemonLoader.normalizeName(input.nextLine());
+
+	    boolean removed = pokedex.remove(name);
+
+	    if (removed) {
+	        System.out.println("Pokemon removed: " + name);
+	    }
+	    else {
+	        System.out.println("Pokemon not found: " + name);
+	    }
+   }
 
     // Provided: reads a non-negative integer using nextLine(), avoiding leftover newlines.
     private static int readNonNegativeInt(Scanner input, String prompt) {
